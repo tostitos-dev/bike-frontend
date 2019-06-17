@@ -8,7 +8,7 @@
             <div class='center-align'>
               <p>Dirección : {{station.name}}</p>
               <p>Geolocalización : {{station.latitude}},{{station.longitude}}</p>
-              <p>Última actualización : {{station.last_update}}</p>
+              <p>Última actualización : hace {{station.last_update}}</p>
             </div>
           </div>
           <div class='col-4 d-inline-flex'>
