@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/stations/:id',
+      path: '/stations',
       name: 'stations',
       component: () => import( './views/Stations.vue')
     }

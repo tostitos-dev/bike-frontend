@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Banner></Banner>
+    <Banner tabName="SUMARIO"></Banner>
     <Summary></Summary>
   </div>
 </template>

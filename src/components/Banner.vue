@@ -7,23 +7,38 @@
 
       <div class="collapse navbar-collapse options-nav" id="navbarNavAltMarkup">
         <div class="navbar-nav navbar-center">
-          <a class="nav-item item-nav no-link" href="#">SUMARIO<span class="sr-only">(current)</span></a>
-          <a class="nav-item item-nav no-link" href="#">ESTACIONAMIENTOS</a>
+          <a v-bind:class="{ 'active-tab': tabName==='SUMARIO' }"
+            class="nav-item item-nav no-link" href="/">SUMARIO<span class="sr-only">(current)</span></a>
+          <a v-bind:class="{ 'active-tab': tabName==='ESTACIONES' }"
+            class="nav-item item-nav no-link" href="/stations">ESTACIONES</a>
         </div>
       </div>
     </nav>
     <div class='banner-container'>
       <img src="@/assets/banner2.jpg" style='opacity:0.8' width="100%" height="250px">
       <div class="bottom-left">
-        <h1><strong>SUMARIO</strong></h1>
+        <h1><strong>{{tabName}}</strong></h1>
       </div>
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Banner',
+  props: {
+    tabName: String
+  }
+}
+</script>
+
+
 <style scoped>
   h1{
     font-size:4rem;
+  }
+  .active-tab{
+    text-decoration: underline !important;
   }
   .no-link{
     text-decoration: none;

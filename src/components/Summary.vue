@@ -12,7 +12,7 @@
       </div>
 
       <div class='col-6 vhr'>
-        <div class='col-4 mt-4'>
+        <div class='col-4'>
           <div class="card card-in-use">
             <div class="card-body text-center">
               <p> En ruta </p>
@@ -20,7 +20,7 @@
             </div>
           </div>
         </div>
-        <div class='col-4 mt-4'>
+        <div class='col-4'>
           <div class="card card-free">
             <div class="card-body text-center">
               <p> Inactivas </p>
@@ -28,7 +28,7 @@
             </div>
           </div>
         </div>
-        <div class='col-4 mt-4'>
+        <div class='col-4'>
           <div class="card card-total">
             <div class="card-body text-center">
               <p> Total </p>
