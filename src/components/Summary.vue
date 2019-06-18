@@ -43,6 +43,19 @@
           :options="options"></Chart>
       </div>
     </div>
+    <hr/>
+    <div class='row mt-5 justify-content-center'>
+      <div class='col-10'>
+        <h2>Última hora</h2>
+        
+        <OccupationChart
+          :width="1000"
+          :chartvaluesUse="generalOccupationData.setEmpty" 
+          :chartvaluesFree="generalOccupationData.setFree" 
+          :chartLabels="generalOccupationData.labels"
+          :optionsValues="optionsValues"></OccupationChart>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -73,16 +86,42 @@
 <script>
   import axios from "axios";
   import Chart from '@/components/Chart.vue'
+  import OccupationChart from '@/components/OccupationChart.vue'
 
   export default {
     name: 'summarydata',
     components: {
-      Chart
+      Chart,
+      OccupationChart
     },
     data() {
       return {
+        options: {},
+        optionsValues: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              },
+              gridLines: {
+                display: true
+              }
+            }],
+            xAxes: [ {
+              gridLines: {
+                display: false
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        },
         stats: { current_time:{}, bike_stats: {}},
         loaded: false,
+        generalOccupationData: { labels: [], setEmpty: [], setFree: []},
         chartData: null
       };
     },
@@ -94,11 +133,17 @@
         this.chartData = await [statsApi.data.bike_stats.use, statsApi.data.bike_stats.free]
         this.loaded = true
         console.log(statsApi.data)
+      },
+      async occupationData(){
+        let occupationApi = await axios.get('http://localhost:5000/api/v1/last_hour.json')
+        this.generalOccupationData = await occupationApi.data
+        console.log(occupationApi.data.labels)
       }
     },
     async mounted(){
       this.loaded = false
       this.generalStats()
+      this.occupationData()
     }
   }
 </script>

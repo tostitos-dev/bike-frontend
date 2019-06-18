@@ -3,7 +3,8 @@
   export default {
     extends: Pie,
     props:{
-      chartvalues: []
+      chartvalues: Array,
+      options: {}
     },
     mounted() {
       // this.chartData is created in the mixin.
