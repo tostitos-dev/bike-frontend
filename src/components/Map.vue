@@ -28,7 +28,7 @@
     props: ['name','latitude', 'longitude'],
     data() {
       const dataValues = {
-        apiKey: 'AIzaSyC8H8HLoD7qVny1-lxQKjLi5oH20MYpiPo',
+        apiKey: `${process.env.VUE_APP_GOOGLE_KEY}`,
         center: `${this.latitude}, ${this.longitude}`,
         format: 'JPEG',
         paths: [],
