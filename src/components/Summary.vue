@@ -1,7 +1,7 @@
 <template>
-  <div class='mt-5'>
-    <div class='row justify-content-center'>
-      <div class='col-2'>
+  <div class='container-fluid'>
+    <div class='row mt-5 justify-content-center'>
+      <div class='col-2 '>
         <div class="card">
           <div class="card-body">
             <p> HOY </p>
@@ -10,8 +10,7 @@
           </div>
         </div>
       </div>
-
-      <div class='col-6 vhr'>
+      <div class='col-6 px-1 pt-4 d-flex vhr'>
         <div class='col-4'>
           <div class="card card-in-use">
             <div class="card-body text-center">
@@ -37,8 +36,9 @@
           </div>
         </div>
       </div>
-      
-      <div class='col-2'></div>
+      <div class='col-3'>
+        <Chart :height="300" :data="chartData"></Chart>
+      </div>
     </div>
   </div>
 </template>
@@ -48,10 +48,11 @@
     font-size: 2rem;
   }
   .card-total{
-    border-color:  #ff5900;
+    background-color:#ff5900;
+    color: white;
   }
   .card-in-use{
-    border-color: #878787;
+    border-color: #ff5900;
   }
   .card-free{
     border-color: #004990;
@@ -65,3 +66,28 @@
     height:250px;
   }
 </style>
+
+<script>
+  import Chart from '@/components/Chart.vue'
+
+  export default {
+    name: 'summary',
+    components: {
+      Chart
+    },
+    data() {
+      return {
+        chartData: {
+          labels: ["En ruta", "Inactivas"],
+          datasets: [
+            {
+              label: "Data One",
+              backgroundColor: ["#ff5900", "#004990"],
+              data: [10, 10]
+            }
+          ]
+        }
+      };
+    }
+  }
+</script>

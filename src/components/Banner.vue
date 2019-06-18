@@ -6,7 +6,7 @@
       </a>
 
       <div class="collapse navbar-collapse options-nav" id="navbarNavAltMarkup">
-        <div class="navbar-nav navbar-center">
+        <div class="navbar-nav navbar-center text-center">
           <a v-bind:class="{ 'active-tab': tabName==='SUMARIO' }"
             class="nav-item item-nav no-link" href="/">SUMARIO<span class="sr-only">(current)</span></a>
           <a v-bind:class="{ 'active-tab': tabName==='ESTACIONES' }"

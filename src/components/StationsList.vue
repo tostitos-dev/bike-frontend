@@ -3,7 +3,9 @@
     <ul v-for="station in stations" v-bind:key="station.id" class="list-group">
       <li class="list-group-item mx-5 my-3">
         <div id='description' class='row'>
-          <div class='col-4'></div>
+          <div class='col-4 map-style'>
+            <Map v-bind:latitude="station.latitude" v-bind:longitude="station.longitude"></Map>
+          </div>
           <div class='col-4'>
             <div class='center-align'>
               <p>Dirección : {{station.name}}</p>
@@ -11,7 +13,7 @@
               <p>Última actualización : hace {{station.last_update}}</p>
             </div>
           </div>
-          <div class='col-4 d-inline-flex'>
+          <div class='col-4 mt-2 d-inline-flex'>
             <div class='summary-card col-4'>
               <div class='card card-in-route'>
                 <div class='card-body'>
@@ -45,6 +47,10 @@
 </template>
 
 <style scoped>
+  .map-style{
+    width:100%;
+    height:150px;
+  }
   .summary-card{
     padding-left: 5px;
     padding-right: 5px;
@@ -66,7 +72,13 @@
 
 <script>
   import axios from "axios";
+  import Map from '@/components/Map.vue'
+
   export default {
+    name: 'stationslist',
+    components: {
+      Map
+    },
     data(){
       return{
         stations: []

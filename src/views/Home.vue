@@ -2,6 +2,7 @@
   <div class="home">
     <Banner tabName="SUMARIO"></Banner>
     <Summary></Summary>
+    <hr class='mx-5'>
   </div>
 </template>
 
