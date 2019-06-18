@@ -1,6 +1,10 @@
 <template>
   <div class='container-fluid my-4'>
-    <ul v-for="station in stations" v-bind:key="station.id" class="list-group">
+    <div>
+      <label class='mr-3'>Buscar estación: </label>
+      <input type="text" v-model="search" placeholder="Buscar estación.."/>
+    </div>
+    <ul v-for="station in filteredList" v-bind:key="station.id" class="list-group">
       <li class="list-group-item mx-5 my-3">
         <div id='description' class='row'>
           <div class='col-4 map-style'>
@@ -81,6 +85,7 @@
     },
     data(){
       return{
+        search: '',
         stations: []
       }
     },
@@ -97,6 +102,13 @@
     },
     created(){
       this.allStations()
+    },
+    computed: {
+      filteredList() {
+        return this.stations.filter(station => {
+          return station.name.toLowerCase().includes(this.search.toLowerCase())
+        })
+      }
     }
   }
 </script>

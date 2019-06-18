@@ -81,7 +81,7 @@
         datasets: [
           {
             label: "En ruta",
-            data: this.chartvaluesUse,
+            data: this.chartvaluesUse, 
             borderColor: '#ff5900',
             pointBackgroundColor: 'white',
             borderWidth: 1,
