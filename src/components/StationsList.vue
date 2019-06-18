@@ -86,7 +86,7 @@
     },
     methods:{
       async allStations(){
-        let stationsApi = await axios.get('http://localhost:3000/api/v1/stations.json')
+        let stationsApi = await axios.get('http://localhost:5000/api/v1/stations.json')
         this.stations = await stationsApi.data
         console.log(stationsApi.data)
       },

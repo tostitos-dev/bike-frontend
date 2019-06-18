@@ -6,7 +6,7 @@
           <div class="card-body">
             <p> HOY </p>
             <p><strong> {{stats.current_time.day}} </strong></p>
-            <p> JUN 2019 </p>
+            <p> {{stats.current_time.mouth}} {{stats.current_time.year}} </p>
           </div>
         </div>
       </div>
@@ -15,7 +15,7 @@
           <div class="card card-in-use">
             <div class="card-body text-center">
               <p> En ruta </p>
-              <p> 999 </p>
+              <p> {{stats.bike_stats.use}} </p>
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
           <div class="card card-free">
             <div class="card-body text-center">
               <p> Inactivas </p>
-              <p> 999 </p>
+              <p> {{stats.bike_stats.free}} </p>
             </div>
           </div>
         </div>
@@ -31,13 +31,16 @@
           <div class="card card-total">
             <div class="card-body text-center">
               <p> Total </p>
-              <p> 999 </p>
+              <p> {{stats.bike_stats.total}} </p>
             </div>
           </div>
         </div>
       </div>
       <div class='col-3'>
-        <Chart :height="300" :data="chartData"></Chart>
+        <Chart :height="300" 
+          v-if="loaded"
+          :chartvalues="[stats.bike_stats.use,stats.bike_stats.free]"
+          :options="options"></Chart>
       </div>
     </div>
   </div>
@@ -78,28 +81,23 @@
     },
     data() {
       return {
-        chartData: {
-          labels: ["En ruta", "Inactivas"],
-          datasets: [
-            {
-              label: "Data One",
-              backgroundColor: ["#ff5900", "#004990"],
-              data: [10, 10]
-            }
-          ]
-        },
-        stats: {JSON}
+        stats: { current_time:{}, bike_stats: {}},
+        loaded: false,
+        chartData: null
       };
     },
 
     methods:{
       async generalStats(){
-        let statsApi = await axios.get('http://localhost:3000/api/v1/daily_indicators.json')
+        let statsApi = await axios.get('http://localhost:5000/api/v1/daily_indicators.json')
         this.stats = await statsApi.data
+        this.chartData = await [statsApi.data.bike_stats.use, statsApi.data.bike_stats.free]
+        this.loaded = true
         console.log(statsApi.data)
       }
     },
-    created(){
+    async mounted(){
+      this.loaded = false
       this.generalStats()
     }
   }
