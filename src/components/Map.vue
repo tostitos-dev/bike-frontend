@@ -29,7 +29,11 @@
     data() {
       const dataValues = {
         apiKey: 'AIzaSyC8H8HLoD7qVny1-lxQKjLi5oH20MYpiPo',
-        center: [this.latitude, this.longitude],
+        center: `${this.latitude}, ${this.longitude}`,
+        format: 'JPEG',
+        paths: [],
+        getUrl: function(){},
+        language: '',
         markers: [
           {
             label: 'B',

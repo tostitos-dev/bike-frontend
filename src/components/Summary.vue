@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-body">
             <p> HOY </p>
-            <p><strong> 16 </strong></p>
+            <p><strong> {{stats.current_time.day}} </strong></p>
             <p> JUN 2019 </p>
           </div>
         </div>
@@ -68,10 +68,11 @@
 </style>
 
 <script>
+  import axios from "axios";
   import Chart from '@/components/Chart.vue'
 
   export default {
-    name: 'summary',
+    name: 'summarydata',
     components: {
       Chart
     },
@@ -86,8 +87,20 @@
               data: [10, 10]
             }
           ]
-        }
+        },
+        stats: {JSON}
       };
+    },
+
+    methods:{
+      async generalStats(){
+        let statsApi = await axios.get('http://localhost:3000/api/v1/daily_indicators.json')
+        this.stats = await statsApi.data
+        console.log(statsApi.data)
+      }
+    },
+    created(){
+      this.generalStats()
     }
   }
 </script>
