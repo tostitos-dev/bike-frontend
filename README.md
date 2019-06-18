@@ -1,29 +1,20 @@
 # bike-frontend
 
-## Project setup
-```
-npm install
-```
+## Vista previa
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Lista de estaciones y sus últimos valores de ocupación:
 
-### Compiles and minifies for production
-```
-npm run build
-```
+![alt text](https://raw.githubusercontent.com/tostitos-dev/bike-frontend/master/src/assets/Screenshot%20from%202019-06-18%2018-19-48.png)
 
-### Run your tests
-```
-npm run test
-```
+Valores actuales de la red
 
-### Lints and fixes files
-```
-npm run lint
-```
+![alt text](https://raw.githubusercontent.com/tostitos-dev/bike-frontend/master/src/assets/Screenshot%20from%202019-06-18%2018-20-02.png)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Gráfico de la última hora (uso vs tiempo)
+![alt text](https://raw.githubusercontent.com/tostitos-dev/bike-frontend/master/src/assets/Screenshot%20from%202019-06-18%2018-20-07.png)
+
+## Instrucciones de uso
+
+- Añadir .env con la API KEY de google
+- Ejecutar npm install
+- Ejecutar npm run serve
