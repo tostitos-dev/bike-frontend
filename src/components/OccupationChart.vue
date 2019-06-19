@@ -3,12 +3,10 @@
   export default {
     extends: Line,
     props:{
+      nameLabel: String,
+      colorChart: String,
       optionsValues: {},
       chartvaluesUse: {
-        type: Array,
-        required: true
-      },
-      chartvaluesFree: {
         type: Array,
         required: true
       },
@@ -56,23 +54,14 @@
         labels: this.chartLabels,
         datasets: [
           {
-            label: "En ruta",
+            label: this.nameLabel,
             data: this.chartvaluesUse,
-            borderColor: '#ff5900',
+            borderColor: this.colorChart,
             pointBackgroundColor: 'white',
             borderWidth: 1,
             pointBorderColor: '#249EBF',
             backgroundColor: 'transparent',
-          },
-          // {
-          //   label: "Inactivas",
-          //   borderColor: '#004990',
-          //   pointBackgroundColor: 'white',
-          //   borderWidth: 1,
-          //   pointBorderColor: '#249EBF',
-          //   backgroundColor: 'transparent',
-          //   data: this.chartvaluesFree
-          // }
+          }
         ]
       }, this.options);
     },
@@ -80,23 +69,14 @@
         labels: this.chartLabels,
         datasets: [
           {
-            label: "En ruta",
-            data: this.chartvaluesUse, 
-            borderColor: '#ff5900',
+            label: this.nameLabel,
+            data: this.chartvaluesUse,
+            borderColor: this.colorChart,
             pointBackgroundColor: 'white',
             borderWidth: 1,
             pointBorderColor: '#249EBF',
             backgroundColor: 'transparent',
-          },
-          // {
-          //   label: "Inactivas",
-          //   borderColor: '#004990',
-          //   pointBackgroundColor: 'white',
-          //   borderWidth: 1,
-          //   pointBorderColor: '#249EBF',
-          //   backgroundColor: 'transparent',
-          //   data: this.chartvaluesFree
-          // }
+          }
         ]
       }, this.options); } },
   };

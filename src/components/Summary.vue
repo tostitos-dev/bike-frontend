@@ -51,9 +51,17 @@
         <OccupationChart
           :width="1000"
           :chartvaluesUse="generalOccupationData.setEmpty" 
-          :chartvaluesFree="generalOccupationData.setFree" 
           :chartLabels="generalOccupationData.labels"
-          :optionsValues="optionsValues"></OccupationChart>
+          :optionsValues="optionsValues"
+          :nameLabel="nameChart[0]"
+          :colorChart="colorChart[0]"></OccupationChart>
+         <OccupationChart
+          :width="1000"
+          :chartvaluesUse="generalOccupationData.setFree" 
+          :chartLabels="generalOccupationData.labels"
+          :optionsValues="optionsValues"
+          :nameLabel="nameChart[1]"
+          :colorChart="colorChart[1]"></OccupationChart>
       </div>
     </div>
   </div>
@@ -96,6 +104,8 @@
     },
     data() {
       return {
+        nameChart: ['En uso', 'Inactivas'],
+        colorChart: ['#ff5900', '#004990'],
         options: {},
         optionsValues: {
           scales: {
